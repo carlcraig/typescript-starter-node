@@ -1,0 +1,23 @@
+{
+  "name": "typescript-starter-node",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "yarn run lint && yarn run build",
+    "start": "concurrently \"yarn watch\" \"nodemon lib/index\"",
+    "build": "tsc --pretty",
+    "lint": "tslint --project ./tsconfig.json -t codeframe",
+    "watch": "concurrently \"yarn run watch:lint\" \"yarn run watch:build\"",
+    "watch:lint": "chokidar \"src/**/*.ts\" \"src/**/*.tsx\" -c \"yarn run lint\"",
+    "watch:build": "tsc --watch --pretty --preserveWatchOutput"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.1",
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.4",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3"
+  }
+}
